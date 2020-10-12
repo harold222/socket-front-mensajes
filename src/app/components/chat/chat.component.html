@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 order-1">
+            <h1 class="text-center font-italic">Mensajes</h1> <hr>
+
+            <div id="chat-mensajes">
+                <li class="list-group-item" *ngFor="let msm of mensajes" >
+                    <span class="badge badge-pill badge-danger">{{msm.de}}</span> {{msm.cuerpo}}
+                </li>
+            </div>
+    
+            <form (ngSubmit)="enviar()" class="mensajes_form">
+                <input type="text" [(ngModel)]="texto" class="form-control w-75 chat-input" 
+                        name="texto" placeholder="Mensaje..." autofocus 
+                        autocomplete="off">
+                <button type="submit" class="send_message"><i class="far fa-paper-plane"></i></button>
+            </form>
+        </div>
+    
+        <div class="col-md-6">
+    
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

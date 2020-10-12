@@ -4,13 +4,31 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// uso de variables enviroment para el url de conexion del socket
+import { environment } from '../environments/environment.prod';
+
+// uso de sockets con libreria ngx-socket-io
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { FooterComponent } from './components/footer/footer.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { FormsModule } from '@angular/forms';
+
+const config: SocketIoConfig = {
+  url: environment.socketsUrl,
+  options: {}
+};
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FooterComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [],
   bootstrap: [AppComponent]
