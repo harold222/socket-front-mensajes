@@ -10,7 +10,7 @@ export class ChatService {
 
   enviarMensaje(mensaje: string) {
     const payload = {
-      de: 'juan',
+      de: this.socketService.getUsuario().nombre,
       cuerpo: mensaje
     };
 
@@ -20,6 +20,18 @@ export class ChatService {
   // estara pendiente a los mensajes que vaya recibiendo de otro cliente
   recibirMensajes() {
     return this.socketService.listener('nuevo-mensaje');
+  }
+
+  getMensajesPrivados() {
+    return this.socketService.listener('mensaje-privado');
+  }
+
+  getUsuariosActivos() {
+    return this.socketService.listener('usuarios-activos');
+  }
+
+  emitirUsuariosActivos() {
+    this.socketService.emit('obtener-usuarios');
   }
 
 }

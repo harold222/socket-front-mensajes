@@ -13,17 +13,28 @@ export class ChatComponent implements OnInit, OnDestroy {
   mensajesSubscription: Subscription;
   mensajes: any[] = [];
   elemento: HTMLElement;
+  public contador: number;
 
-  constructor(public charServicio: ChatService) { }
+  constructor(public charServicio: ChatService) {
+    this.contador = 0;
+  }
 
   ngOnInit() {
     this.elemento = document.getElementById('chat-mensajes');
 
     this.mensajesSubscription = this.charServicio.recibirMensajes().subscribe(msm => {
       this.mensajes.push(msm);
+
       setTimeout(() => {
         this.elemento.scrollTop = this.elemento.scrollHeight;
-      }, 80);
+        let a = JSON.parse(localStorage.getItem('usuario_socket'));
+        const liMensajeEntrante = document.querySelectorAll('#li-mensajes');
+
+        if (msm['de'] === a['nombre']) {
+          liMensajeEntrante[liMensajeEntrante.length-1].classList.add('justify-content-end');
+          this.contador++;
+        }
+      }, 40);
     });
   }
 

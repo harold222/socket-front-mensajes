@@ -1,27 +1,24 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 order-1">
-            <h1 class="text-center font-italic">Mensajes</h1> <hr>
+<h1 class="text-center font-italic">Sala de Chat</h1>
 
-            <div id="chat-mensajes">
-                <li class="list-group-item" *ngFor="let msm of mensajes" >
-                    <span class="badge badge-pill badge-danger">{{msm.de}}</span> {{msm.cuerpo}}
-                </li>
+<div id="chat-mensajes">
+    <li class="list-group-item" *ngFor="let msm of mensajes" id="li-mensajes">
+        <div class="list_message">
+            <div class="scroll_name_message">
+                <div class="sticky_move">
+                    <span class="badge badge-pill badge-danger name_message">{{msm.de}}</span>
+                </div>
             </div>
-    
-            <form (ngSubmit)="enviar()" class="mensajes_form">
-                <input type="text" [(ngModel)]="texto" class="form-control w-75 chat-input" 
-                        name="texto" placeholder="Mensaje..." autofocus 
-                        autocomplete="off">
-                <button type="submit" class="send_message"><i class="far fa-paper-plane"></i></button>
-            </form>
+            <span class="body_message"> {{msm.cuerpo}}</span>
         </div>
-    
-        <div class="col-md-6">
-    
-        </div>
-    </div>
+    </li>
 </div>
+
+<form (ngSubmit)="enviar()" class="mensajes_form">
+    <input type="text" [(ngModel)]="texto" class="form-control w-75 chat-input" 
+            name="texto" placeholder="Mensaje..." autofocus 
+            autocomplete="off">
+    <button type="submit" class="send_message"><i class="far fa-paper-plane"></i></button>
+</form>
 
 
 
