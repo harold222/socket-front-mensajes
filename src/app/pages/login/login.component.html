@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <h1 class="text-center text-white">Login sockets Mensajes</h1><hr>
+            <img src="assets/svg/1.svg" class="img-fluid" alt="login sockets">
+        </div>
+        <div class="col-md-6">
+            <form class="p-4 login_form" (ngSubmit)="ingresar()">
+                <label class="text-white">Ingresa con tu nombre *</label>
+                <input type="text" [(ngModel)]="nombre" name="nombre" class="form-control"
+                        placeholder="Nombre usuario" autofocus autocomplete="off">
+                <button type="submit" [disabled]="nombre.trim().length === 0" 
+                    class="btn btn-success btn-block">Ingresar <i class="fas fa-sign-in-alt"></i></button>
+            </form>
+        </div>
+    </div>   
+</div>
+
+
